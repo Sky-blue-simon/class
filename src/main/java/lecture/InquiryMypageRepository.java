@@ -9,4 +9,6 @@ public interface InquiryMypageRepository extends CrudRepository<InquiryMypage, L
     List<InquiryMypage> findByClassId(Long classId);
 
     List<InquiryMypage> findByPaymentId(Long paymentId);
+
+   
 }

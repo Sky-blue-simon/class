@@ -18,6 +18,8 @@ public class InquiryMypage {
         private String deliveryStatus;
         private Long paymentId;
         private String status;
+//        private Long point;
+        private String pointStatus;
 
 
         public Long getId() {
@@ -91,5 +93,23 @@ public class InquiryMypage {
         public void setPaymentId(Long paymentId) {
             this.paymentId = paymentId;
         }
+
+/*
+        public Long getPoint() {
+            return point;
+        }
+
+        public void setPoint(Long point) {
+            this.point = point;
+        }
+*/
+        public String getPointStatus() {
+            return pointStatus;
+        }
+
+        public void setPointStatus(String pointStatus) {
+            this.pointStatus = pointStatus;
+        }
+
 
 }

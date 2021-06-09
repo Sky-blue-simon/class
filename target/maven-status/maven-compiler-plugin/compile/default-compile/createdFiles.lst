@@ -6,6 +6,7 @@ lecture\InquiryMypageViewHandler.class
 lecture\ClassApplication.class
 lecture\ClassRepository.class
 lecture\config\kafka\KafkaProcessor.class
+lecture\PointRegistered.class
 lecture\external\PaymentService.class
 lecture\Class.class
 lecture\PaymentApproved.class

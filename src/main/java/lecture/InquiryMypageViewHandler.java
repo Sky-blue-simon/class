@@ -29,6 +29,7 @@ public class InquiryMypageViewHandler {
                 inquiryMypage.setPaymentStatus(paymentApproved.getStatus());
                 inquiryMypage.setTextBook(paymentApproved.getTextBook());
                 inquiryMypage.setStatus("CLASS_START");
+//                inquiryMypage.setPoint(paymentApproved.getPoint());
                 // view 레파지 토리에 save
                 inquiryMypageRepository.save(inquiryMypage);
             }
@@ -92,6 +93,35 @@ public class InquiryMypageViewHandler {
 
                     // view 레파지 토리에 save
                     inquiryMypageRepository.save(inquiryMypage);
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    @StreamListener(KafkaProcessor.INPUT)
+    public void whenPointRegistered_then_UPDATE_4(@Payload PointRegistered pointRegistered) {
+        
+        System.out.println("111");
+        
+        try {
+            if (pointRegistered.isMe()) {
+                System.out.println("222");
+                // view 객체 조회
+                List<InquiryMypage> inquiryMypageList = inquiryMypageRepository.findByClassId(pointRegistered.getClassId());
+                for (InquiryMypage inquiryMypage : inquiryMypageList) {
+                    System.out.println("333");
+                    
+                    // view 객체에 이벤트의 eventDirectValue 를 set 함
+                    // inquiryMypage.setPoint(pointRegistered.getPoint());
+                    System.out.println("444");
+                    
+                    inquiryMypage.setPointStatus("Point Added");
+
+                    // view 레파지 토리에 save
+                    inquiryMypageRepository.save(inquiryMypage);
+                    System.out.println("555");
                 }
             }
         } catch (Exception e) {
